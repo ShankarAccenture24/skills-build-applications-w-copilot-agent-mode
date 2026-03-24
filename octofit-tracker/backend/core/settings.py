@@ -48,9 +48,11 @@ INSTALLED_APPS = [
     'teams',
     'leaderboard',
     'suggestions',
+    'corsheaders',
 ]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -89,12 +91,15 @@ DATABASES = {
         'ENGINE': 'djongo',
         'NAME': 'octofit_tracker',
         'ENFORCE_SCHEMA': False,
-        'CLIENT': {
-            'host': 'mongodb://localhost:27017',
-        },
-    }
+		'CLIENT': {
+			'host': 'mongodb://localhost:27017',
+		},
+	}
 }
 
+# CORS settings
+CORS_ALLOW_ALL_ORIGINS = True
+CORS_ALLOW_CREDENTIALS = True
 
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
